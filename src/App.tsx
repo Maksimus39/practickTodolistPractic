@@ -39,10 +39,20 @@ function App() {
         setFilter(filter)
     }
     // function addTask
-    const addTask = (title:string) => {
+    const addTask = (title: string) => {
         const newTask = {id: v1(), title: title, isDone: false}
         const newTasks = [newTask, ...tasks]
         setTasks(newTasks)
+    }
+    // function changeTaskStatusHandler
+    const changeTaskStatus = (taskID: string, taskStatus: boolean) => {
+        // const task = tasks.find(ts => ts.id === taskID)
+        // if (task) {
+        //     task.isDone = taskStatus
+        //     setTasks([...tasks])
+        // }
+        const newState = tasks.map(ts => (ts.id === taskID ? {...ts, isDone: taskStatus} : ts))
+        setTasks(newState)
     }
 
     return (
@@ -53,7 +63,8 @@ function App() {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 addTask={addTask}
-
+                changeTaskStatus={changeTaskStatus}
+                filter={filter}
             />
         </div>
     );
