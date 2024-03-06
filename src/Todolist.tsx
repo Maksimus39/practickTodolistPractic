@@ -62,7 +62,10 @@ export const Todolist = (props: PropsType) => {
                                            onChange={changeTaskStatusHandler}
                                     />
                                     {/*<span>{task.title}</span>*/}
-                                    <EditableSpan title={task.title}/>
+                                    <EditableSpan
+                                        title={task.title}
+                                        onChange={()=>{}}
+                                    />
                                     <Button title={'X'} onClick={removeTaskHandler}/>
                                 </li>
                             )
