@@ -3,7 +3,7 @@ import {ChangeEvent, useState} from "react";
 
 type EditableSpanPropsType = {
     title: string
-    onChange:()=>void
+    onChange:(newValue:string)=>void
 };
 export const EditableSpan = (props: EditableSpanPropsType) => {
     const [editMode, setEditMode] = useState(false)
@@ -16,7 +16,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     }
     const activateViewMode = () => {
         setEditMode(false)
-        props.onChange()
+        props.onChange(title)
     }
     const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
