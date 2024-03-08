@@ -3,6 +3,8 @@ import {Button} from "./Button";
 import {FilterValuesType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
+import {IconButton} from "@mui/material";
+import {Delete} from "@mui/icons-material";
 
 export type TaskType = {
     id: string
@@ -43,7 +45,12 @@ export const Todolist = (props: PropsType) => {
     return (
         <div>
             <h3><EditableSpan title={props.title} onChange={changeTodolistTitle}/>
-                <button onClick={removeTodolistHandler}>X</button>
+                {/*<button onClick={removeTodolistHandler}>X</button>*/}
+
+                <IconButton onClick={removeTodolistHandler}>
+                    <Delete/>
+                </IconButton>
+
             </h3>
             <AddItemForm addItem={addTask}/>
 
@@ -74,7 +81,14 @@ export const Todolist = (props: PropsType) => {
                                         title={task.title}
                                         onChange={onChangeTitleHandler}
                                     />
-                                    <Button title={'X'} onClick={removeTaskHandler}/>
+
+
+                                    {/*<Button title={'X'} onClick={removeTaskHandler}/>*/}
+                                    <IconButton onClick={removeTaskHandler}>
+                                        <Delete/>
+                                    </IconButton>
+
+
                                 </li>
                             )
                         })}
@@ -83,11 +97,17 @@ export const Todolist = (props: PropsType) => {
 
                 <div>
                     <Button className={props.filter === 'All' ? 'active-filter' : ''} title={'All'}
-                            onClick={() => changeFilterTasksHandler("All")}/>
+                            onClick={() => changeFilterTasksHandler("All")}
+                            color='inherit'
+                    />
                     <Button className={props.filter === 'Active' ? 'active-filter' : ''} title={'Active'}
-                            onClick={() => changeFilterTasksHandler("Active")}/>
+                            onClick={() => changeFilterTasksHandler("Active")}
+                    color='primary'
+                    />
                     <Button className={props.filter === 'Completed' ? 'active-filter' : ''} title={'Completed'}
-                            onClick={() => changeFilterTasksHandler("Completed")}/>
+                            onClick={() => changeFilterTasksHandler("Completed")}
+                    color='secondary'
+                    />
                 </div>
             </div>
         </div>
