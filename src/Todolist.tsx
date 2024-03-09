@@ -3,7 +3,7 @@ import {Button} from "./Button";
 import {FilterValuesType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {IconButton} from "@mui/material";
+import {Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
 export type TaskType = {
@@ -72,10 +72,19 @@ export const Todolist = (props: PropsType) => {
                             }
                             return (
                                 <li key={task.id} className={task.isDone ? 'is-done' : ''}>
-                                    <input type="checkbox"
-                                           checked={task.isDone}
-                                           onChange={changeTaskStatusHandler}
+
+
+                                    <Checkbox
+                                        checked={task.isDone}
+                                        color='primary'
+                                        onChange={changeTaskStatusHandler}
                                     />
+                                    {/*<input type="checkbox"*/}
+                                    {/*       checked={task.isDone}*/}
+                                    {/*       onChange={changeTaskStatusHandler}*/}
+                                    {/*/>*/}
+
+
                                     {/*<span>{task.title}</span>*/}
                                     <EditableSpan
                                         title={task.title}
@@ -96,17 +105,26 @@ export const Todolist = (props: PropsType) => {
                 )}
 
                 <div>
-                    <Button className={props.filter === 'All' ? 'active-filter' : ''} title={'All'}
-                            onClick={() => changeFilterTasksHandler("All")}
-                            color='inherit'
+                    <Button
+                        variant={props.filter === "All" ? 'outlined' : 'text'}
+                        // className={props.filter === 'All' ? 'active-filter' : ''}
+                        title={'All'}
+                        onClick={() => changeFilterTasksHandler("All")}
+                        color='inherit'
                     />
-                    <Button className={props.filter === 'Active' ? 'active-filter' : ''} title={'Active'}
-                            onClick={() => changeFilterTasksHandler("Active")}
-                    color='primary'
+                    <Button
+                        variant={props.filter === "Active" ? 'outlined' : 'text'}
+                        // className={props.filter === 'Active' ? 'active-filter' : ''}
+                        title={'Active'}
+                        onClick={() => changeFilterTasksHandler("Active")}
+                        color='primary'
                     />
-                    <Button className={props.filter === 'Completed' ? 'active-filter' : ''} title={'Completed'}
-                            onClick={() => changeFilterTasksHandler("Completed")}
-                    color='secondary'
+                    <Button
+                        variant={props.filter === "Completed" ? 'outlined' : 'text'}
+                        // className={props.filter === 'Completed' ? 'active-filter' : ''}
+                        title={'Completed'}
+                        onClick={() => changeFilterTasksHandler("Completed")}
+                        color='secondary'
                     />
                 </div>
             </div>

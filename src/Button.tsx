@@ -3,12 +3,22 @@ import {Button as MuiButton} from '@mui/material'
 type ButtonPropsType = {
     title: string
     onClick?: () => void
-    className?: string
+    //className?: string
     color: 'inherit' | 'primary' | 'secondary'
+    variant?: 'outlined' | 'text'
 }
 
-export const Button = ({title, onClick, className, color}: ButtonPropsType) => {
+export const Button = ({
+                           title,
+                           onClick,
+                           // className,
+                           variant,
+                           color
+                       }: ButtonPropsType) => {
     return (
-        <MuiButton onClick={onClick} className={className} color={color}>{title}</MuiButton>
+        <MuiButton onClick={onClick}
+            // className={className}
+                   variant={variant}
+                   color={color}>{title}</MuiButton>
     )
 }

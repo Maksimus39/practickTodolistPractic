@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import {ChangeEvent, KeyboardEvent, useState} from "react";
-import {Button} from "@mui/material";
+import {Button, TextField} from "@mui/material";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -33,12 +33,21 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
 
     return (
         <div>
-            <input value={taskTitle}
-                   onChange={changeTaskTitleHandler}
-                   onKeyPress={addTaskOnKeyUpHandler}
-                   className={error ? 'error' : ''}
+            <TextField variant='outlined'
+                       value={taskTitle}
+                       onChange={changeTaskTitleHandler}
+                       onKeyPress={addTaskOnKeyUpHandler}
+                       className={error ? "error" : ''}
             />
-            <Button onClick={addItem} variant='contained' color='success' style={{maxWidth:'20px',maxHeight:'20px',minWidth:'20px',minHeight:'20px'}}>+</Button>
+
+
+            {/*<input value={taskTitle}*/}
+            {/*       onChange={changeTaskTitleHandler}*/}
+            {/*       onKeyPress={addTaskOnKeyUpHandler}*/}
+            {/*       className={error ? 'error' : ''}*/}
+            {/*/>*/}
+            <Button onClick={addItem} variant='contained' color='success'
+                    style={{maxWidth: '53px', maxHeight: '53px', minWidth: '53px', minHeight: '53px'}}>+</Button>
             {error && <div className='error-message'>{error}</div>}
         </div>
     );
