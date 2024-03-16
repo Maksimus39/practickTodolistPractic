@@ -13,7 +13,7 @@ export type TodolistsType = {
     title: string
     filter: FilterValuesType
 }
-type TasksStateTYpe = {
+export type TasksStateType = {
     [key: string]: TaskType[]
 }
 
@@ -28,7 +28,7 @@ function App() {
         {id: todolistID2, title: 'What to buy', filter: 'All'},
     ])
     // массив тасок
-    let [tasks, setTasks] = useState<TasksStateTYpe>({
+    let [tasks, setTasks] = useState<TasksStateType>({
         [todolistID1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JS', isDone: true},
@@ -65,6 +65,8 @@ function App() {
     // function removeTodolist
     function removeTodolist(ID: string) {
         setTodolists(todolists.filter(todos => todos.id !== ID))
+        delete tasks[ID]
+        setTasks({...tasks})
     }
 
     // добавляем новый тудулист
